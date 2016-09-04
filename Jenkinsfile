@@ -18,6 +18,7 @@ node {
    stage 'Build'
    // Run the maven build
    sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean package"
+   stage 'Archive'
    echo 'running archive'
    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml,**/target/test-results/TEST-*.xml'])
 //input id: 'My Stuff', message: 'Input some stuff', ok: 'Press this', submitter: 'brown'
